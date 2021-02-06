@@ -12,25 +12,23 @@
 with source_data as (
 
 
-   (
-    select 
-     codpj 
-    from 
-     proyecto
-   )
-   except
-   (
-    select distinct
-     proyecto.codpj
-    from
-     proyecto, pieza, ventas, proveedor
-    where
-     ventas.codp = pieza.codp and
-     ventas.codpj = proyecto.codpj and
-     ventas.codpro = proveedor.codpro and
-     proveedor.ciudad = 'Londres' and
-     pieza.color = 'rojo'
-   )
+(
+  select
+    codpj
+  from
+    ventas
+  where
+    codpro = 'S1'
+)
+except
+(
+  select
+    codpj
+  from
+    ventas
+  where
+   codpro <> 'S1'
+)
 
 
 )
