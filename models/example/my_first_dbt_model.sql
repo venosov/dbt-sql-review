@@ -12,12 +12,14 @@
 with source_data as (
 
 
-select
-   ventas.codpro, count (*)
+select 
+  codp, codpj, sum(ventas.cantidad)
 from
-   ventas
+  ventas
 group by
-   ventas.codpro
+  codp, codpj
+order by
+  codp, codpj
 
 
 
