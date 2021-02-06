@@ -1,3 +1,36 @@
+### Levantar postgres con docker compose:
+
+- stack.yml
+
+      # Use postgres/example user/password credentials
+      version: '3.1'
+
+      services:
+
+      db:
+         image: postgres
+         restart: always
+         environment:
+            POSTGRES_PASSWORD: example
+         ports:
+            - 5432:5432
+
+      adminer:
+         image: adminer
+         restart: always
+         ports:
+            - 8080:8080
+
+
+- docker-compose -f stack.yml up
+- http://localhost:8080/
+
+
+Más info:
+
+- https://hub.docker.com/_/postgres
+- https://docs.getdbt.com/reference/warehouse-profiles/postgres-profile/
+
 ### Consultas a realizar.
 
 1. Encontrar los códigos de los proveedores que suministran al proyecto J1.
