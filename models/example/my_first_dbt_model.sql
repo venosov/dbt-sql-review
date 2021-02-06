@@ -14,10 +14,9 @@ with source_data as (
 
 select
    proyecto.nompj, avg(ventas.cantidad)
-from
-   proyecto, ventas
-where
-   proyecto.codpj = ventas.codpj
+from proyecto
+INNER JOIN ventas
+   ON proyecto.codpj = ventas.codpj
 group by
    proyecto.nompj
 
