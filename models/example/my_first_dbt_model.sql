@@ -11,15 +11,21 @@
 
 with source_data as (
 
-select pieza.codp, pieza.ciudad
+select distinct
+  proyecto.codpj, proyecto.nompj
 from
-  proveedor, pieza, ventas, proyecto
+  ventas, proyecto
 where
-  proveedor.ciudad = proyecto.ciudad and
-  proveedor.codpro = ventas.codpro and
-  pieza.codp	   = ventas.codp and
-  proyecto.codpj   = ventas.codpj
-order by pieza.ciudad
+  ventas.codp in 
+  (
+     select distinct
+        ventas.codp
+     from
+        ventas
+     where
+        ventas.codpro = 'S1'
+  )
+  and ventas.codpj = proyecto.codpj
 
 )
 
