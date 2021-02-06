@@ -12,23 +12,32 @@
 with source_data as (
 
 
-(
-  select
-    codpj
-  from
-    ventas
-  where
-    codpro = 'S1'
-)
-except
-(
-  select
-    codpj
-  from
-    ventas
-  where
-   codpro <> 'S1'
-)
+select distinct 
+   ventas1.codp 
+from 
+   ventas ventas1 
+where 
+   not exists
+   (
+     (
+       select 
+         proyecto.codpj 
+       from 
+         proyecto 
+       where 
+         proyecto.ciudad = 'Londres'
+     )
+     except
+     (
+       select 
+         ventas.codpj 
+       from 
+         ventas
+       where 
+         ventas.codp = ventas1.codp
+     )
+   )
+
 
 
 )
