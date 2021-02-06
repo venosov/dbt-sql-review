@@ -11,21 +11,21 @@
 
 with source_data as (
 
-select distinct
-  proyecto.codpj, proyecto.nompj
+select 
+  codpro
 from
-  ventas, proyecto
+  proveedor
 where
-  ventas.codp in 
+  status > any 
   (
-     select distinct
-        ventas.codp
-     from
-        ventas
+     select
+       status
+     from 
+       proveedor
      where
-        ventas.codpro = 'S1'
+       codpro = 'S7'
   )
-  and ventas.codpj = proyecto.codpj
+
 
 )
 
