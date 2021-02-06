@@ -43,4 +43,4 @@
 
 16. 15 haciendo uso de INNER JOIN
 
-
+17. Ejemplo de left join

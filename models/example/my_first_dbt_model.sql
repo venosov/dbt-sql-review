@@ -13,14 +13,10 @@ with source_data as (
 
 
 select
-   proyecto.nompj, avg(ventas.cantidad)
+   proyecto.nompj, ventas.cantidad
 from proyecto
-INNER JOIN ventas
+LEFT JOIN ventas
    ON proyecto.codpj = ventas.codpj
-group by
-   proyecto.nompj
-
-
 
 
 )
