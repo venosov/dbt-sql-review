@@ -11,9 +11,9 @@
 
 with source_data as (
 
-select *
-from ventas
-where cantidad between 200 and 300
+select nompie, color, peso
+from pieza
+order by peso
 
 )
 
