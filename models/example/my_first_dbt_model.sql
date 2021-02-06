@@ -11,9 +11,9 @@
 
 with source_data as (
 
-    select codpro
-    from ventas
-    where codpj='J1' order by codpro
+select *
+from ventas
+where cantidad between 200 and 300
 
 )
 
