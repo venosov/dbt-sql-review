@@ -11,9 +11,14 @@
 
 with source_data as (
 
-select nompie, color, peso
-from pieza
-order by peso
+select proveedor.codpro, proyecto.codpj, pieza.codp
+from proveedor, proyecto, pieza, ventas
+where proveedor.ciudad = pieza.ciudad and
+      proveedor.ciudad = proyecto.ciudad and
+      pieza.ciudad     = proyecto.ciudad and
+      proveedor.codpro = ventas.codpro and
+      pieza.codp       = ventas.codp and
+      proyecto.codpj   = ventas.codpj
 
 )
 
