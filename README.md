@@ -24,6 +24,21 @@
 
 - docker-compose -f stack.yml up
 - http://localhost:8080/
+- dbt profiles.yml:
+
+      default:
+         target: dev
+         outputs:
+            dev:
+               type: postgres
+               host: xxx.xxx.x.xxx
+               user: postgres
+               pass: example
+               port: 5432
+               dbname: template1
+               schema: public
+               threads: 1
+               keepalives_idle: 0 # default 0, indicating the system default
 
 
 Más info:
