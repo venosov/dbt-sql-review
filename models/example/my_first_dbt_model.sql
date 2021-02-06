@@ -11,14 +11,15 @@
 
 with source_data as (
 
-select distinct pieza.nompie, proveedor.ciudad
-from 
-  pieza, ventas, proveedor
-where 
-  proveedor.ciudad = 'Londres' and
+select pieza.codp, pieza.ciudad
+from
+  proveedor, pieza, ventas, proyecto
+where
+  proveedor.ciudad = proyecto.ciudad and
   proveedor.codpro = ventas.codpro and
-  ventas.codp = pieza.codp
-order by pieza.nompie
+  pieza.codp	   = ventas.codp and
+  proyecto.codpj   = ventas.codpj
+order by pieza.ciudad
 
 )
 
