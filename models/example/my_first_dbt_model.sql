@@ -12,30 +12,12 @@
 with source_data as (
 
 
-select distinct 
+select
+   ventas.codpro, count (*)
+from
+   ventas
+group by
    ventas.codpro
-from 
-   ventas 
-where 
-   not exists
-   (
-     (
-       select 
-         proyecto.ciudad 
-       from 
-         proyecto 
-     )
-     except
-     (
-       select 
-         pieza.ciudad
-       from 
-         pieza, ventas ventas1
-       where 
-         ventas1.codp = pieza.codp and
-         ventas1.codpro = ventas.codpro
-     )
-   )
 
 
 
