@@ -13,30 +13,30 @@ with source_data as (
 
 
 select distinct 
-   ventas1.codp 
+   ventas.codpro
 from 
-   ventas ventas1 
+   ventas 
 where 
    not exists
    (
      (
        select 
-         proyecto.codpj 
+         proyecto.ciudad 
        from 
          proyecto 
-       where 
-         proyecto.ciudad = 'Londres'
      )
      except
      (
        select 
-         ventas.codpj 
+         pieza.ciudad
        from 
-         ventas
+         pieza, ventas ventas1
        where 
-         ventas.codp = ventas1.codp
+         ventas1.codp = pieza.codp and
+         ventas1.codpro = ventas.codpro
      )
    )
+
 
 
 
