@@ -12,14 +12,14 @@
 with source_data as (
 
 
-select 
-  codp, codpj, sum(ventas.cantidad)
+select
+   proyecto.nompj, avg(ventas.cantidad)
 from
-  ventas
+   proyecto, ventas
+where
+   proyecto.codpj = ventas.codpj
 group by
-  codp, codpj
-order by
-  codp, codpj
+   proyecto.nompj
 
 
 
